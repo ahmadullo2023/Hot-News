@@ -33,25 +33,33 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white10,
-      body: FutureBuilder(
-        future: futureList,
-        builder: (context, snapshot){
-         //if (snapshot.hasData) {
-            return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  final article = snapshot.data![index];
-                  final image = article["urlToImage"];
-                  return image != null
-                      ? NewsCard(article: article, image: image)
-                      : const SizedBox();
-                }
-            );
-          }
-        //},
+      body: RefreshIndicator(
+        backgroundColor: Colors.white,
+        onRefresh: refresh,
+        child: FutureBuilder(
+          future: futureList,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    final article = snapshot.data![index];
+                    final image = article["urlToImage"];
+                    return image != null
+                        ? NewsCard(article: article, image: image)
+                        : const CircularProgressIndicator();
+                  });
+            }
+            return const Center(
+                child: CircularProgressIndicator(
+              color: Colors.white,
+              strokeWidth: 4,
+              strokeAlign: BorderSide.strokeAlignCenter,
+            ));
+          },
+        ),
       ),
     );
   }
 }
-// final article = snapshot.data![index];
-// final image = article["urlToImage"];

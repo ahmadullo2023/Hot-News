@@ -60,7 +60,7 @@ class _PageBuilderState extends State<PageBuilder> {
                   },
                 ),
                 CustomBottomItem(
-                  iconName: const Icon(Icons.search),
+                  iconName: const Icon(Icons.favorite_border),
                   currentPage: 1,
                   index: index,
                   onTap: () {
@@ -70,7 +70,7 @@ class _PageBuilderState extends State<PageBuilder> {
                   },
                 ),
                 CustomBottomItem(
-                  iconName: const Icon(Icons.favorite_border),
+                  iconName: const Icon(Icons.person_outline),
                   currentPage: 2,
                   index: index,
                   onTap: () {

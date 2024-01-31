@@ -33,7 +33,7 @@ class _NewsCardState extends State<NewsCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  widget.article["author"],
+                  widget.article["author"] ?? "author unknown",
                   style: const TextStyle(color: Colors.white),
                 ),
                 const Icon(Icons.favorite_border, color: Colors.white),
@@ -41,6 +41,7 @@ class _NewsCardState extends State<NewsCard> {
             ),
             const Divider(color: Colors.white10),
           ],
-        ));
+        ),
+    );
   }
 }
