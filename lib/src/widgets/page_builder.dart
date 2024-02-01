@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/favorite.dart';
 import '../screens/home.dart';
-import '../screens/search.dart';
+import '../screens/profile.dart';
 import '../view/items.dart';
 
 
@@ -89,8 +89,8 @@ class _PageBuilderState extends State<PageBuilder> {
         controller: controller,
         children: const [
           Home(),
-          SearchPage(),
           FavoritePage(),
+          ProfilePage(),
         ],
       ),
     );

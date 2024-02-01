@@ -41,15 +41,16 @@ class _HomeState extends State<Home> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) {
-                    final article = snapshot.data![index];
-                    final image = article["urlToImage"];
-                    return image != null
-                        ? NewsCard(article: article, image: image)
-                        : const CircularProgressIndicator();
-                  });
+                physics: const BouncingScrollPhysics(),
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  final article = snapshot.data![index];
+                  final image = article["urlToImage"];
+                  return image != null
+                      ? NewsCard(article: article, image: image)
+                      : const CircularProgressIndicator();
+                },
+              );
             }
             return const Center(
                 child: CircularProgressIndicator(

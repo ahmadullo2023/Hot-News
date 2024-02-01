@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CustomBottomItem extends StatelessWidget {
   const CustomBottomItem({
@@ -34,6 +35,30 @@ class CustomBottomItem extends StatelessWidget {
               : const SizedBox.shrink(),
         ],
       ),
+    );
+  }
+}
+
+class ProfileItem extends StatelessWidget {
+  const ProfileItem({
+    super.key,
+    required this.titleT,
+  });
+
+  final Widget titleT;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ListTile(
+          title: titleT,
+          trailing: Icon(Icons.arrow_forward_ios),
+          textColor: Colors.white,
+          iconColor: Colors.white,
+        ),
+        const Divider(color: Colors.white),
+      ],
     );
   }
 }
