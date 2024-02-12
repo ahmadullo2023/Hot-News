@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../view/items.dart';
 
 class ProfilePage extends StatefulWidget {

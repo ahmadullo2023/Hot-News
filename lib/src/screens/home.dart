@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/services_api.dart';
-import '../view/news_card.dart';
+import '../view/news_view.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -31,6 +31,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    bool isFolovered = true;
     return Scaffold(
       backgroundColor: Colors.white10,
       body: RefreshIndicator(
@@ -39,25 +40,26 @@ class _HomeState extends State<Home> {
         child: FutureBuilder(
           future: futureList,
           builder: (context, snapshot) {
-            if (snapshot.hasData) {
+           if (snapshot.hasData) {
               return ListView.builder(
                 physics: const BouncingScrollPhysics(),
-                itemCount: snapshot.data!.length,
+                itemCount: snapshot.data?.length,
                 itemBuilder: (context, index) {
                   final article = snapshot.data![index];
                   final image = article["urlToImage"];
-                  return image != null
-                      ? NewsCard(article: article, image: image)
-                      : const CircularProgressIndicator();
+                  return image != null ?
+                  NewsView(article: article, image: image, isFolovered: isFolovered)
+                  : const CircularProgressIndicator();
                 },
               );
             }
             return const Center(
                 child: CircularProgressIndicator(
-              color: Colors.white,
-              strokeWidth: 4,
+              color: Colors.red,
+                  strokeWidth: 4,
               strokeAlign: BorderSide.strokeAlignCenter,
-            ));
+              ),
+            );
           },
         ),
       ),
